@@ -1,0 +1,56 @@
+{
+   "6a36a29d-a6d9-4a71-887c-f4eb2856b18d": {
+      "id_w": "6a36a29d-a6d9-4a71-887c-f4eb2856b18d",
+      "bezeichnung_w": "Englisch I",
+      "von_w": "2020-10-06",
+      "bis_w": "2020-11-06",
+      "beschreibung_w": "Lernen und sprechen mit Fachvokabeln",
+      "maxteilnehmer_w": "15",
+      "minteilnehmer_w": "5"
+   },
+   "2f4eb181-44f5-4ec8-9f23-15a4111d06bf": {
+      "id_w": "2f4eb181-44f5-4ec8-9f23-15a4111d06bf",
+      "bezeichnung_w": "Objektorientierte Anwendung",
+      "von_w": "2020-11-07",
+      "bis_w": "2020-12-26",
+      "beschreibung_w": "C++, Pointer und etc.",
+      "maxteilnehmer_w": "15",
+      "minteilnehmer_w": "1"
+   },
+   "8f642df6-5c9c-407f-9a65-fff06927350f": {
+      "id_w": "8f642df6-5c9c-407f-9a65-fff06927350f",
+      "bezeichnung_w": "IT-Sicherheit",
+      "von_w": "2020-12-09",
+      "bis_w": "2020-12-25",
+      "beschreibung_w": "Infos zur IT-Sicherheit",
+      "maxteilnehmer_w": "10",
+      "minteilnehmer_w": "2"
+   },
+   "49eec2d5-e317-4049-99af-2980ce788ef1": {
+      "id_w": "49eec2d5-e317-4049-99af-2980ce788ef1",
+      "bezeichnung_w": "Datenanalyse",
+      "von_w": "2021-01-01",
+      "bis_w": "2021-01-06",
+      "beschreibung_w": "Analyse von Benutzerdaten",
+      "maxteilnehmer_w": "22",
+      "minteilnehmer_w": "6"
+   },
+   "6de6cdf8-5743-4265-a00d-d68160eb8c75": {
+      "id_w": "6de6cdf8-5743-4265-a00d-d68160eb8c75",
+      "bezeichnung_w": "Bildverarbeitung",
+      "von_w": "2021-01-01",
+      "bis_w": "2021-01-29",
+      "beschreibung_w": "Grundlagen zur Bildverarbeitung",
+      "maxteilnehmer_w": "11",
+      "minteilnehmer_w": "5"
+   },
+   "1feccdbd-1cd5-41c3-bb8f-5ef56505bb5a": {
+      "id_w": "1feccdbd-1cd5-41c3-bb8f-5ef56505bb5a",
+      "bezeichnung_w": "Java",
+      "von_w": "2021-02-11",
+      "bis_w": "2021-03-19",
+      "beschreibung_w": "Erste Programmierungen mit Java",
+      "maxteilnehmer_w": "14",
+      "minteilnehmer_w": "7"
+   }
+}

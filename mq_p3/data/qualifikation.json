@@ -1,0 +1,38 @@
+{
+   "6a36a29d-a6d9-4a71-887c-f4eb2856b18d": {
+      "id_w": "6a36a29d-a6d9-4a71-887c-f4eb2856b18d",
+      "bezeichnung_q": "Englisch I",
+      "beschreibung_q": "Beherrscht Englisch Grundlagen I",
+      "id_q": "6a36a29d-a6d9-4a71-887c-f4eb2856b18d"
+   },
+   "2f4eb181-44f5-4ec8-9f23-15a4111d06bf": {
+      "id_w": "2f4eb181-44f5-4ec8-9f23-15a4111d06bf",
+      "bezeichnung_q": "OAA",
+      "beschreibung_q": "C++",
+      "id_q": "2f4eb181-44f5-4ec8-9f23-15a4111d06bf"
+   },
+   "8f642df6-5c9c-407f-9a65-fff06927350f": {
+      "id_w": "8f642df6-5c9c-407f-9a65-fff06927350f",
+      "bezeichnung_q": "IT-Sicherheitsexperte",
+      "beschreibung_q": "Experte in IT-Sicherheit",
+      "id_q": "8f642df6-5c9c-407f-9a65-fff06927350f"
+   },
+   "49eec2d5-e317-4049-99af-2980ce788ef1": {
+      "id_w": "49eec2d5-e317-4049-99af-2980ce788ef1",
+      "bezeichnung_q": "Datenanalytiker",
+      "beschreibung_q": "Qualifikation zum Datenanalytiker",
+      "id_q": "49eec2d5-e317-4049-99af-2980ce788ef1"
+   },
+   "6de6cdf8-5743-4265-a00d-d68160eb8c75": {
+      "id_w": "6de6cdf8-5743-4265-a00d-d68160eb8c75",
+      "bezeichnung_q": "BVA",
+      "beschreibung_q": "Berechtigt zur Bildverarbeitung",
+      "id_q": "6de6cdf8-5743-4265-a00d-d68160eb8c75"
+   },
+   "1feccdbd-1cd5-41c3-bb8f-5ef56505bb5a": {
+      "id_w": "1feccdbd-1cd5-41c3-bb8f-5ef56505bb5a",
+      "bezeichnung_q": "Java-Grundlagen",
+      "beschreibung_q": "Beherscht grundlegende Kenntnisse der Sprache Java",
+      "id_q": "1feccdbd-1cd5-41c3-bb8f-5ef56505bb5a"
+   }
+}

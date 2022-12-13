@@ -1,0 +1,44 @@
+{
+   "6a36a29d-a6d9-4a71-887c-f4eb2856b18d": {
+      "id_w": "6a36a29d-a6d9-4a71-887c-f4eb2856b18d",
+      "bezeichnung_z": "English Certificate I",
+      "beschreibung_z": "Zertifikat Englisch Grundkurs I",
+      "berechtigtzu_z": "Ausserl\u00e4ndische Arbeiten in Begleitung eine Mitarbeiters diese Zertifikates oder h\u00f6her.",
+      "id_z": "6a36a29d-a6d9-4a71-887c-f4eb2856b18d"
+   },
+   "2f4eb181-44f5-4ec8-9f23-15a4111d06bf": {
+      "id_w": "2f4eb181-44f5-4ec8-9f23-15a4111d06bf",
+      "bezeichnung_z": "",
+      "beschreibung_z": "",
+      "berechtigtzu_z": "",
+      "id_z": "2f4eb181-44f5-4ec8-9f23-15a4111d06bf"
+   },
+   "8f642df6-5c9c-407f-9a65-fff06927350f": {
+      "id_w": "8f642df6-5c9c-407f-9a65-fff06927350f",
+      "bezeichnung_z": "",
+      "beschreibung_z": "",
+      "berechtigtzu_z": "",
+      "id_z": "8f642df6-5c9c-407f-9a65-fff06927350f"
+   },
+   "49eec2d5-e317-4049-99af-2980ce788ef1": {
+      "id_w": "49eec2d5-e317-4049-99af-2980ce788ef1",
+      "bezeichnung_z": "",
+      "beschreibung_z": "",
+      "berechtigtzu_z": "",
+      "id_z": "49eec2d5-e317-4049-99af-2980ce788ef1"
+   },
+   "6de6cdf8-5743-4265-a00d-d68160eb8c75": {
+      "id_w": "6de6cdf8-5743-4265-a00d-d68160eb8c75",
+      "bezeichnung_z": "",
+      "beschreibung_z": "",
+      "berechtigtzu_z": "",
+      "id_z": "6de6cdf8-5743-4265-a00d-d68160eb8c75"
+   },
+   "1feccdbd-1cd5-41c3-bb8f-5ef56505bb5a": {
+      "id_w": "1feccdbd-1cd5-41c3-bb8f-5ef56505bb5a",
+      "bezeichnung_z": "Java Zertifikat",
+      "beschreibung_z": "Erfolgreiches Abschlie\u00dfen des Kurses Java",
+      "berechtigtzu_z": "Programmierungen in der Sprache Java",
+      "id_z": "1feccdbd-1cd5-41c3-bb8f-5ef56505bb5a"
+   }
+}

@@ -1,0 +1,36 @@
+# Liste von Pflege Mitarbeiter anzeigen -> OK 200
+http://localhost:8080/app/mitarbeiter/
+
+###
+
+# Einen ausgewählten Mitarbeiter in Pflege Mitarbeiter anzeigen -> OK 200
+GET http://localhost:8080/app/mitarbeiterAnzeigen/bd34b1d2-fed0-4afd-9030-90c01c9b9dbf/undefined HTTP/1.1
+Content-Type: application/json
+
+{
+	"id_m": "bd34b1d2-fed0-4afd-9030-90c01c9b9dbf"
+}
+
+###
+
+# Einen neuen Mitarbeiter erfassen -> 404
+POST http://localhost:8080/app/mitarbeiter/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "id_m": "087a1a44-1050-4917-8293-b5e4dac50c22",
+    "name": "Test_Name1",
+    "vorname": "Test_Vorname1",
+    "akagrad": "Test_Aka1",
+    "taetigkeit": "Test_Tat1"
+}
+
+###
+
+# Einen Mitarbeiter löschen -> OK 200
+DELETE http://localhost:8080/app/mitarbeiter/10d736be-76b2-4c94-96b3-243beaa564a1 HTTP/1.1
+Content-Type: application/json
+
+{
+	"id_m": "10d736be-76b2-4c94-96b3-243beaa564a1"
+}

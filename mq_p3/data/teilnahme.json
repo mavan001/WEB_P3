@@ -1,0 +1,22 @@
+{
+   "e69d2087-cd2c-437e-b84b-fcc3e01448e6": {
+      "id_w": "1feccdbd-1cd5-41c3-bb8f-5ef56505bb5a",
+      "id_m": "286a9ef3-24cc-4ee2-aa92-aaa9b4471fea",
+      "status": "erfolgreich"
+   },
+   "5930fcdc-ef1a-47c7-b3c0-dbdd2eb73d15": {
+      "id_w": "1feccdbd-1cd5-41c3-bb8f-5ef56505bb5a",
+      "id_m": "28a00ba3-182a-4c39-bc5c-379d4d43d09e",
+      "status": "erfolgreich"
+   },
+   "6d30d7fd-c67a-4a90-a13b-bb1bfb244973": {
+      "id_w": "1feccdbd-1cd5-41c3-bb8f-5ef56505bb5a",
+      "id_m": "bd34b1d2-fed0-4afd-9030-90c01c9b9dbf",
+      "status": "angemeldet"
+   },
+   "c6c4b87b-d524-495d-922c-bad2cb09eec3": {
+      "id_w": "1feccdbd-1cd5-41c3-bb8f-5ef56505bb5a",
+      "id_m": "ded3e45e-5f15-4df0-be1b-31fdff9ec830",
+      "status": "angemeldet"
+   }
+}

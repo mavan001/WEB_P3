@@ -1,0 +1,58 @@
+{
+   "3bfd7a6b-ca58-4da8-96b4-7bac5bdfcb53": {
+      "id_m": "3bfd7a6b-ca58-4da8-96b4-7bac5bdfcb53",
+      "name": "Marvin",
+      "vorname": "Van Kessel",
+      "akagrad": "Bachelor Informatik",
+      "taetigkeit": "Student"
+   },
+   "286a9ef3-24cc-4ee2-aa92-aaa9b4471fea": {
+      "id_m": "286a9ef3-24cc-4ee2-aa92-aaa9b4471fea",
+      "name": "Mustermann",
+      "vorname": "Maxi",
+      "akagrad": "Bachelor Maschinenbau",
+      "taetigkeit": "Mechatroniker"
+   },
+   "0752581d-367c-48b2-952c-9886435931bd": {
+      "id_m": "0752581d-367c-48b2-952c-9886435931bd",
+      "name": "Schmitz",
+      "vorname": "Peter",
+      "akagrad": "Bachelor of Science",
+      "taetigkeit": "Webentwicklung"
+   },
+   "1b4a3511-3516-4b6e-997b-1611a6cf8bc4": {
+      "id_m": "1b4a3511-3516-4b6e-997b-1611a6cf8bc4",
+      "name": "Kaufmann",
+      "vorname": "Max",
+      "akagrad": "Hochschulreife",
+      "taetigkeit": "Praktikant"
+   },
+   "bd34b1d2-fed0-4afd-9030-90c01c9b9dbf": {
+      "id_m": "bd34b1d2-fed0-4afd-9030-90c01c9b9dbf",
+      "name": "Michaels",
+      "vorname": "Fritz",
+      "akagrad": "Master of Science",
+      "taetigkeit": "Programmierer"
+   },
+   "28a00ba3-182a-4c39-bc5c-379d4d43d09e": {
+      "id_m": "28a00ba3-182a-4c39-bc5c-379d4d43d09e",
+      "name": "Franke",
+      "vorname": "Lisa",
+      "akagrad": "Bachelor of Arts",
+      "taetigkeit": "Mediengestaltung"
+   },
+   "ded3e45e-5f15-4df0-be1b-31fdff9ec830": {
+      "id_m": "ded3e45e-5f15-4df0-be1b-31fdff9ec830",
+      "name": "Maximus",
+      "vorname": "Max",
+      "akagrad": "Bachelor Informatik",
+      "taetigkeit": "Tester"
+   },
+   "087a1a44-1050-4917-8293-b5e4dac50c58": {
+      "id_m": "087a1a44-1050-4917-8293-b5e4dac50c58",
+      "name": "Test_Name2",
+      "vorname": "Test_Vorname2",
+      "akagrad": "Test_Aka2",
+      "taetigkeit": "Test_Tat2"
+   }
+}

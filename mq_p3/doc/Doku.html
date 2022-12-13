@@ -1,0 +1,584 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WEB P3 Mitarbeiterqualifizierung</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><hr>
+<h1 id="mitarbeiterqualifizierung">Mitarbeiterqualifizierung</h1>
+<p><strong>Gruppe B4</strong><br><br>
+<strong>Marvin van Kessel (986598)</strong><br><br>
+<strong>Gültigkeitsdatum 21.01.2021</strong></p>
+<h2 id="allgemeine-beschreibung">Allgemeine Beschreibung</h2>
+<h3 id="aufgabe-der-anwendung">Aufgabe der Anwendung</h3>
+<p>Die Anwendung “Mitarbeiterqualifizierung” ermöglicht das Verwalten von Mitarbeitern, Weiterbildungen, Qualifizierungen und ggf. Zertifikaten.<br>
+Dazu gehört das Erfassen neuer Mitarbeiter oder Weiterbildungen, sowie die Bearbeitung und Löschung dieser Daten.<br>
+Mitarbeiter können an Weiterbildungen teilnehmen oder ihre Teilnahme stornieren. Durch erfolgreiches Abschließen einer Weiterbildung kann ein Mitarbeiter Qualifikationen und Zertifikate erwerben.<br>
+Desweiteren gibt es Funktionen zur Auswertung der Mitarbeiter und Weiterbildungen. Dort findet man eine Liste aller Weiterbildungen an denen der Mitarbeiter teilgenommen hat, sowie die Zertifikate die man erlangt hat.<br>
+Außerdem ist sichtbar, welche Weiterbildungen wie viele erfolgreiche Teilnehmer hatte.</p>
+<hr>
+<h3 id="übersicht-der-fachlichen-funktionen">Übersicht der fachlichen Funktionen</h3>
+<h4 id="startseite">Startseite</h4>
+<p>Hier werden folgende Infos angezeigt:</p>
+<ul>
+<li>Anzahl der erfassten Mitarbeiter</li>
+<li>Anzahl der planenden, laufenden und abgeschlossenen Weiterbildungen</li>
+<li>Anzahl aller Teilnahmen an Weiterbildungen</li>
+</ul>
+<h4 id="pflege">Pflege</h4>
+<ul>
+<li>Verwaltung der Mitarbeiter: Erfassen, bearbeiten und löschen</li>
+<li>Detailierte Ansicht der Mitarbeiter</li>
+<li>Verwaltung der Weiterbildungen sowie Qualifikationen (und ggf. Zertifikate): Erfassen, bearbeiten und löschen</li>
+<li>Detailierte Ansicht der Weiterbildungen</li>
+</ul>
+<h4 id="teilnahme">Teilnahme</h4>
+<ul>
+<li>Mitarbeiter können an zukünftig angebotenen Weiterbildungen teilnehmen und wieder stornieren sofern die Weiterbildung nicht begonnen hat</li>
+<li>Weiterbildungen können bei abgeschlossenem Status zwischen Erfolg und Nichterfolg der Teilnehmer entscheiden</li>
+<li>Weiterbildungen können bei laufendem Status die Teilnahme der Mitarbeiter abbrechen</li>
+</ul>
+<h4 id="auswertungen">Auswertungen</h4>
+<ul>
+<li>Detailierte Ansicht der Mitarbeiter und dessen Teilnahmen an Weiterbildung inklusive Status</li>
+<li>Detailierte Ansicht der Weitbildungen führt zu Listenansicht der erfolgreichen Teilnehmer</li>
+<li>Auflistung aller möglich erwerbbaren Zertifikate sowie Liste der Mitarbeiter, die diese erworben haben</li>
+</ul>
+<hr>
+<h2 id="beschreibung-der-komponenten-des-servers">Beschreibung der Komponenten des Servers</h2>
+<h3 id="server.py-server.py"><a href="http://server.py">server.py</a> <code>server.py</code></h3>
+<p>Startet den Server.</p>
+<hr>
+<h3 id="application.py-application.py"><a href="http://application.py">application.py</a> <code>application.py</code></h3>
+<h4 id="zweck">Zweck</h4>
+<p>Die Application Python Datei ist für die Verwaltung des Datenverkehrs zuständig.</p>
+<h4 id="zusammenwirken-mit-anderen-komponenten">Zusammenwirken mit anderen Komponenten</h4>
+<p>Die Klassegreift auf <code>database.py</code> zu um die Daten der Mitarbeiter und Weiterbildungen von der Datenbank zu erhalten. Ebenfalls wird <code>view.py</code> aufgegriffen, um die Seiten mit den entsprechenden Daten anzuzeigen.</p>
+<h4 id="api">API</h4>
+
+<table>
+<thead>
+<tr>
+<th>Funktionen für Startseite</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self)</code></td>
+<td>Legt die Datenbank database an, sowie view.</td>
+</tr>
+<tr>
+<td><code>GET(self, id=None, startseite=None)</code></td>
+<td>Fordert Daten an. Gibt die Funktionen getAllData zurück.</td>
+</tr>
+<tr>
+<td><code>getAllData(self)</code></td>
+<td>Sammelt alle benötigten Daten für die Startseite und sendet diese an View.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Funktionen für Mitarbeiter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self)</code></td>
+<td>Legt die Datenbank database an, sowie view.</td>
+</tr>
+<tr>
+<td><code>GET(self, id=None, mitarbeiter=None)</code></td>
+<td>Fordert Daten an. Gibt die Funktionen getList oder getDetail zurück.</td>
+</tr>
+<tr>
+<td><code>POST(self, id, name, vorname, akagrad, taetigkeit)</code></td>
+<td>Erfasst einen neuen Mitarbeiter. Sendet Daten an Datebase zum erstellen.</td>
+</tr>
+<tr>
+<td><code>PUT(self, id, name, vorname, akagrad, taetigkeit)</code></td>
+<td>Bearbeitet einen Mitarbeiter. Sendet Daten an Datebase zum updaten.</td>
+</tr>
+<tr>
+<td><code>DELETE(self, id)</code></td>
+<td>Löscht einen Mitarbeiter. Sendet id an Datebase zum löschen.</td>
+</tr>
+<tr>
+<td><code>getList_m(self)</code></td>
+<td>Fordert alle Mitarbeiterdaten an.</td>
+</tr>
+<tr>
+<td><code>getDetail_m(self)</code></td>
+<td>Fordert alle Daten an eines bestimmten Mitarbeiters an.</td>
+</tr>
+<tr>
+<td><code>get_mitarbeiter_anzeigen(self, id_spl)</code></td>
+<td>Liest alle Daten aus und sendet diese an View um einen Mitarbeiter anzuzeigen.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Funktionen für Weiterbildungen</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self)</code></td>
+<td>Legt die Datenbank database an, sowie view.</td>
+</tr>
+<tr>
+<td><code>GET(self, id=None, weiterbildung=None)</code></td>
+<td>Fordert Daten an. Gibt die Funktionen getList oder getDetail zurück.</td>
+</tr>
+<tr>
+<td><code>POST(self, id, bezeichnung_w, von_w, bis_w, beschreibung_w, maxteilnehmer_w, minteilnehmer_w, bezeichnung_q, beschreibung_q, bezeichnung_z, beschreibung_z, berechtigtzu_z)</code></td>
+<td>Erfasst eine neue Weiterbildung inkl. Qualifikation und Zertifikat. Sendet Daten an Datebase zum erstellen.</td>
+</tr>
+<tr>
+<td><code>PUT(self, id, bezeichnung_w, von_w, bis_w, beschreibung_w, maxteilnehmer_w, minteilnehmer_w, bezeichnung_q, beschreibung_q, bezeichnung_z, beschreibung_z, berechtigtzu_z)</code></td>
+<td>Bearbeitet eine Weiterbildung. Sendet Daten an Datebase zum updaten.</td>
+</tr>
+<tr>
+<td><code>DELETE(self, id)</code></td>
+<td>Löscht eine Weiterbildung. Sendet id an Datebase zum löschen.</td>
+</tr>
+<tr>
+<td><code>getList_w(self)</code></td>
+<td>Fordert alle Daten der Weiterbildungen an.</td>
+</tr>
+<tr>
+<td><code>getDetail_w(self)</code></td>
+<td>Fordert alle Daten einer bestimmten Weiterbildung an.</td>
+</tr>
+<tr>
+<td><code>get_weiterbildung_anzeigen(self, id_spl)</code></td>
+<td>Liest alle Daten aus und sendet diese an View um eine Weiterbildung anzuzeigen.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Funktionen für Teilnahme</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self)</code></td>
+<td>Legt die Datenbank database an, sowie view.</td>
+</tr>
+<tr>
+<td><code>GET(self, id=None, teilnahme=None)</code></td>
+<td>Fordert Daten an.</td>
+</tr>
+<tr>
+<td><code>POST(self, id_w, id_m)</code></td>
+<td>Erfasst eine neue Teilnahme.</td>
+</tr>
+<tr>
+<td><code>PUT(self, id_m, id_w, status)</code></td>
+<td>Bearbeitet eine Teilnahme. Sendet Daten an Datebase zum updaten.</td>
+</tr>
+<tr>
+<td><code>DELETE(self, id_w, id_m)</code></td>
+<td>Löscht eine Teilnahme. Sendet Id’s an Datebase zum löschen.</td>
+</tr>
+<tr>
+<td><code>getList_w(self)</code></td>
+<td>Fordert alle Daten der Weiterbildungen an.</td>
+</tr>
+<tr>
+<td><code>getDetail_mt(self, id_spl)</code></td>
+<td>Fordert alle Daten an für die Anzeige Teilnahme Mitarbeiter.</td>
+</tr>
+<tr>
+<td><code>getDetail_wt(self, id_spl)</code></td>
+<td>Fordert alle Daten an für die Anzeige Teilnahme Weiterbildung.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Funktionen für Auswertungen</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self)</code></td>
+<td>Legt die Datenbank database an, sowie view.</td>
+</tr>
+<tr>
+<td><code>GET()</code></td>
+<td>Fordert Daten an.</td>
+</tr>
+<tr>
+<td><code>POST()</code></td>
+<td>Erstellt Daten neu.</td>
+</tr>
+<tr>
+<td><code>PUT()</code></td>
+<td>Bearbeitet Daten. Sendet Daten an Datebase zum updaten.</td>
+</tr>
+<tr>
+<td><code>DELETE()</code></td>
+<td>Löscht Daten.</td>
+</tr>
+<tr>
+<td><code>getList_auswertung()</code></td>
+<td>Fordert alle Daten der Liste an.</td>
+</tr>
+<tr>
+<td><code>getDetail_auswertung()</code></td>
+<td>Fordert alle Daten an detailierte Anzeige.</td>
+</tr>
+</tbody>
+</table><hr>
+<h3 id="database.py-database.py"><a href="http://database.py">database.py</a> <code>database.py</code></h3>
+<h4 id="zweck-1">Zweck</h4>
+<p>Die Database Python Datei ist für die Verwaltung aller Daten zuständig.<br>
+Es werden Methoden zum Erstellen, Löschen oder ändern der Daten zur Verfügung gestellt.</p>
+<h4 id="api-1">API</h4>
+
+<table>
+<thead>
+<tr>
+<th>Funktionen</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self)</code></td>
+<td>Legt die Datensätze an und ließt Sie aus den JSON Dateien aus.</td>
+</tr>
+<tr>
+<td><code>create_mitarbeiter(self, data_m)</code></td>
+<td>Erstellt eine random ID. Die mitgelieferten Daten werden der ID zugewiesen und in die JSON Datei gespeichert.</td>
+</tr>
+<tr>
+<td><code>create_weiterbildung(self, data_w, data_q, data_z)</code></td>
+<td>Erstellt eine random ID. Die mitgelieferten Daten werden der ID zugewiesen und in die JSON Datei gespeichert.</td>
+</tr>
+<tr>
+<td><code>create_qualifikation(self, data_q, id)</code></td>
+<td>Die mitgelieferten Daten werden der ID zugewiesen und in die JSON Datei gespeichert.</td>
+</tr>
+<tr>
+<td><code>create_zertifikate(self, data_z, id)</code></td>
+<td>Die mitgelieferten Daten werden der ID zugewiesen und in die JSON Datei gespeichert.</td>
+</tr>
+<tr>
+<td><code>create_teilnahme(self, data_t, id_w, id_m, data_new)</code></td>
+<td>Erstellt eine random ID. Die mitgelieferten Daten werden der ID zugewiesen und in die JSON Datei gespeichert.</td>
+</tr>
+<tr>
+<td><code>create_teilnahmeIDs(self, id_t)</code></td>
+<td>Erstellt eine neue Teilnahme ID.</td>
+</tr>
+<tr>
+<td><code>read_mitarbeiter(self, id_m = None)</code></td>
+<td>Lädt die Daten data_m, falls Id mitgegeben sind das die Daten dieses Mitarbeiters, ansonsten von allen.</td>
+</tr>
+<tr>
+<td><code>read_weiterbildung(self, id_w = None)</code></td>
+<td>Lädt die Daten data_w, falls Id mitgegeben sind das die Daten dieser Weiterbildung, ansonsten von allen.</td>
+</tr>
+<tr>
+<td><code>read_qualifikation(self, id_q = None)</code></td>
+<td>Lädt die Daten data_q, falls Id mitgegeben sind das die Daten dieser Weiterbildung, ansonsten von allen.</td>
+</tr>
+<tr>
+<td><code>read_zertifikate(self, id_z = None)</code></td>
+<td>Lädt die Daten data_z, falls Id mitgegeben sind das die Daten dieser Weiterbildung, ansonsten von allen.</td>
+</tr>
+<tr>
+<td><code>read_teilnahme(self, id_t = None)</code></td>
+<td>Lädt die Daten data_t.</td>
+</tr>
+<tr>
+<td><code>read_teilnahmeIDs(self, id_tID = None)</code></td>
+<td>Lädt die Daten data_tIDs.</td>
+</tr>
+<tr>
+<td><code>update_mitarbeiter(self, id_m, data_m)</code></td>
+<td>Aktualisiert die Daten zwischen JSON und data_m.</td>
+</tr>
+<tr>
+<td><code>update_weiterbildung(self, id_w, data_w)</code></td>
+<td>Aktualisiert die Daten zwischen JSON und data_w.</td>
+</tr>
+<tr>
+<td><code>update_qualifikation(self, id_q, data_q)</code></td>
+<td>Aktualisiert die Daten zwischen JSON und data_q.</td>
+</tr>
+<tr>
+<td><code>update_zertifikate(self, id_z, data_z)</code></td>
+<td>Aktualisiert die Daten zwischen JSON und data_z.</td>
+</tr>
+<tr>
+<td><code>update_teilnahme(self, data_t, data_tIDs, id_m, id_w, status)</code></td>
+<td>Aktualisiert die Daten zwischen JSON und data_t.</td>
+</tr>
+<tr>
+<td><code>delete_Mitarbeiter(self, id_m)</code></td>
+<td>Entfernt Mitarbeiterdaten der mitgelieferten ID.</td>
+</tr>
+<tr>
+<td><code>delete_Weiterbildung(self, id_w)</code></td>
+<td>Entfernt Weiterbildungsdaten der mitgelieferten ID.</td>
+</tr>
+<tr>
+<td><code>delete_Qualifikation(self, id_q)</code></td>
+<td>Entfernt Qualifikationen der mitgelieferten ID.</td>
+</tr>
+<tr>
+<td><code>delete_Zertifikate(self, id_z)</code></td>
+<td>Entfernt Zertifikate der mitgelieferten ID.</td>
+</tr>
+<tr>
+<td><code>delete_Teilnahme(self, id_w, id_m)</code></td>
+<td>Entfernt die Teilnahme der mitgelieferten ID.</td>
+</tr>
+<tr>
+<td><code>readData_mitarbeiter(self)</code></td>
+<td>Lädt die Daten aus der JSON Datei und speichert sie in data_m.</td>
+</tr>
+<tr>
+<td><code>readData_weiterbildung(self)</code></td>
+<td>Lädt die Daten aus der JSON Datei und speichert sie in data_w.</td>
+</tr>
+<tr>
+<td><code>readData_qualifikation(self)</code></td>
+<td>Lädt die Daten aus der JSON Datei und speichert sie in data_q.</td>
+</tr>
+<tr>
+<td><code>readData_zertifikate(self)</code></td>
+<td>Lädt die Daten aus der JSON Datei und speichert sie in data_z.</td>
+</tr>
+<tr>
+<td><code>readData_teilnahme(self)</code></td>
+<td>Lädt die Daten aus der JSON Datei und speichert sie in data_t.</td>
+</tr>
+<tr>
+<td><code>saveData_mitarbeiter(self)</code>, <code>saveData_weiterbildung(self)</code>, <code>saveData_qualifikation(self)</code>, <code>saveData_zertifikate(self)</code>, <code>saveData_teilnahme(self)</code></td>
+<td>Schreibt und überschreibt die Daten in die JSON Datei.</td>
+</tr>
+</tbody>
+</table><hr>
+<h3 id="template.py-template.py"><a href="http://template.py">template.py</a> <code>template.py</code></h3>
+<h4 id="zweck-2">Zweck</h4>
+<p>Wird benutzt um alle Templates an den Client zu schicken.</p>
+<hr>
+<h3 id="view.py-view.py"><a href="http://view.py">view.py</a> <code>view.py</code></h3>
+<h4 id="zweck-3">Zweck</h4>
+<p>Die View Klasse ist für die Zusammenstellung von Daten für die verschiedenen Templates zuständig.</p>
+<h3 id="api-2">API</h3>
+
+<table>
+<thead>
+<tr>
+<th>Funktionen</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>createStartseite(self, data_m, data_w, data_t)</code></td>
+<td>Fasst die Daten für die Startseite zusammen.</td>
+</tr>
+<tr>
+<td><code>createList_m(self, data_m)</code></td>
+<td>Daten von allen Mitarbeitern zusammenfassen.</td>
+</tr>
+<tr>
+<td><code>createDetail_m(self, data_m, data_w, data_q, data_z, data_t)</code></td>
+<td>Daten von einem bestimmten Mitarbeiter zusammenfassen.</td>
+</tr>
+<tr>
+<td><code>mitarbeiter_anzeigen(self, data_m, data_w, data_q, data_z, data_t, id_spl)</code></td>
+<td>Daten für die Mitarbeiter Anzeige zusammenfassen.</td>
+</tr>
+<tr>
+<td><code>createList_w(self, data_w)</code></td>
+<td>Daten von allen Weiterbildungen(inkl. Qualifikation, Zertifikat) zusammenfassen.</td>
+</tr>
+<tr>
+<td><code>createDetail_w(self, data_w, data_q, data_z)</code></td>
+<td>Daten von einer bestimmten Weiterbildungen(inkl. Qualifikation, Zertifikat) zusammenfassen.</td>
+</tr>
+<tr>
+<td><code>weiterbildung_anzeigen(self, data_m, data_w, data_q, data_z, data_t, id_spl)</code></td>
+<td>Daten für die Weiterbildungs Anzeige zusammenfassen.</td>
+</tr>
+<tr>
+<td><code>createDetail_w_t(self, data_m, data_w, data_t, data_tIDs)</code>, <code>createDetail_m_t(self, data_m, data_w, data_t, data_tIDs)</code></td>
+<td>Daten von einer bestimmten Teilnahme zusammenfassen.</td>
+</tr>
+<tr>
+<td><code>createList_auswertung_mitarbeiter(self, data_m)</code>, <code>createList_auswertung_weiterbildung(self, data_w)</code>, <code>createList_auswertung_zertifikat(self, data_z)</code></td>
+<td>Daten für die Auswertung zusammenfassen.</td>
+</tr>
+<tr>
+<td><code>createDetail_auswertung_mitarbeiter(self, data_m, data_w, data_t, id_spl)</code>, <code>createDetail_auswertung_weiterbildung(self, data_m, data_w, data_t, id_spl)</code>, <code>createDetail_auswertung_zertifikat(self, data_m, data_z, data_t, id_spl)</code></td>
+<td>Daten für die Auswertung Anzeigen zusammenfassen.</td>
+</tr>
+</tbody>
+</table><hr>
+<h3 id="main.js"><code>main.js</code></h3>
+<ul>
+<li>
+<p><code>AnzeigenView_cl</code></p>
+<p>Wird benötigt wenn eine Detailsicht angezeigt werden soll.</p>
+</li>
+<li>
+<p><code>FormView_cl</code></p>
+<p>Wird benötigt wenn eine Formularansicht angezeigt werden soll.</p>
+</li>
+<li>
+<p><code>ListView_cl</code></p>
+<p>Wird benötigt wenn eine Listenansicht angezeigt werden soll.</p>
+</li>
+<li>
+<p><code>SideBar_cl</code></p>
+<p>Dient zum rendern der Sidebar.</p>
+</li>
+<li>
+<p><code>Application_cl</code></p>
+<p>Hat hauptsächtlich die Aufgabe die <code>main.js</code> zu verwalten. Sie lädt zuerst<br>
+alle Templates mit Hilfe der anderen Klassen. Der Eventservice ruft die <code>notify_px()</code><br>
+auf um das rendern einzuleiten. Diese ruft nämlich je nach ID die entsprechende<br>
+<code>render_px()</code> in <code>ListView_cl</code>, <code>FormView_cl</code> oder <code>AnzeigenView_cl</code>,<br>
+welche wiederum die Template-Engine aufruft und so das Markup erstellt.</p>
+</li>
+</ul>
+<hr>
+<h3 id="evs.js"><code>evs.js</code></h3>
+<p>Durch den Eventservice wird ein clientseitiger asynchroner Austausch zwischen den<br>
+JavaScript-Komponenten ermöglicht. Die Implementierung erfolgt in der Klasse <code>EventService_cl</code>.<br>
+Er arbeitet im Publish-Subscriber-Muster:</p>
+<ul>
+<li>Subscriber melden sich zum Empfang von Nachrichten an (subscribe-Schnittstelle)</li>
+<li>ein Publisher veröffentlicht über die publish-Schnittstelle des Eventservice eine Nachricht</li>
+<li>die Subscriber erhalten dann eine Benachrichtung über ihre notify-Schnittstelle</li>
+<li>Subscriber beenden den Empfang durch Aufruf der unSubscribe-Schnittstelle.</li>
+</ul>
+<hr>
+<h2 id="datenablage">Datenablage</h2>
+<p>Die Daten werden JSON-Dateien abgelegt. Das Skript <code>database.py</code> sicher die Daten der Mitarbeiter, Weiterbildungen etc in:</p>
+<ul>
+<li>mitarbeiter.json</li>
+<li>qualifikation.json</li>
+<li>teilnahme.json</li>
+<li>teilnahmeIDs.json</li>
+<li>weiterbildung.json</li>
+<li>zertifikat.json</li>
+</ul>
+<hr>
+<h2 id="konfiguration">Konfiguration</h2>
+<pre class=" language-python"><code class="prism  language-python">   <span class="token comment"># Method-Dispatcher für die "Startseite" Klasse</span>
+   cherrypy<span class="token punctuation">.</span>tree<span class="token punctuation">.</span>mount<span class="token punctuation">(</span>
+      application<span class="token punctuation">.</span>App_startseite_cl<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token string">'/app/startseite/'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span><span class="token string">'/'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'request.dispatch'</span><span class="token punctuation">:</span> cherrypy<span class="token punctuation">.</span>dispatch<span class="token punctuation">.</span>MethodDispatcher<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+   <span class="token punctuation">)</span>
+
+   <span class="token comment"># Method-Dispatcher für die "Mitarbeiter" Klasse</span>
+   cherrypy<span class="token punctuation">.</span>tree<span class="token punctuation">.</span>mount<span class="token punctuation">(</span>
+      application<span class="token punctuation">.</span>App_mitarbeiter_cl<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token string">'/app/mitarbeiter/'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span><span class="token string">'/'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'request.dispatch'</span><span class="token punctuation">:</span> cherrypy<span class="token punctuation">.</span>dispatch<span class="token punctuation">.</span>MethodDispatcher<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+   <span class="token punctuation">)</span>
+
+   <span class="token comment"># Method-Dispatcher für "Mitarbeiter Anzeigen" Klasse</span>
+   cherrypy<span class="token punctuation">.</span>tree<span class="token punctuation">.</span>mount<span class="token punctuation">(</span>
+      application<span class="token punctuation">.</span>App_mitarbeiter_anzeigen_cl<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token string">'/app/mitarbeiterAnzeigen/'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span><span class="token string">'/'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'request.dispatch'</span><span class="token punctuation">:</span> cherrypy<span class="token punctuation">.</span>dispatch<span class="token punctuation">.</span>MethodDispatcher<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+   <span class="token punctuation">)</span>
+
+   <span class="token comment"># Method-Dispatcher für "Weiterbildung" Klasse</span>
+   cherrypy<span class="token punctuation">.</span>tree<span class="token punctuation">.</span>mount<span class="token punctuation">(</span>
+      application<span class="token punctuation">.</span>App_weiterbildung_cl<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token string">'/app/weiterbildung/'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span><span class="token string">'/'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'request.dispatch'</span><span class="token punctuation">:</span> cherrypy<span class="token punctuation">.</span>dispatch<span class="token punctuation">.</span>MethodDispatcher<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+   <span class="token punctuation">)</span>
+
+   <span class="token comment"># Method-Dispatcher für "Weiterbildung Anzeigen" Klasse</span>
+   cherrypy<span class="token punctuation">.</span>tree<span class="token punctuation">.</span>mount<span class="token punctuation">(</span>
+      application<span class="token punctuation">.</span>App_weiterbildung_anzeigen_cl<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token string">'/app/weiterbildungAnzeigen/'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span><span class="token string">'/'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'request.dispatch'</span><span class="token punctuation">:</span> cherrypy<span class="token punctuation">.</span>dispatch<span class="token punctuation">.</span>MethodDispatcher<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+   <span class="token punctuation">)</span>
+
+   <span class="token comment"># Method-Dispatcher für "Teilnahme" Klasse</span>
+   cherrypy<span class="token punctuation">.</span>tree<span class="token punctuation">.</span>mount<span class="token punctuation">(</span>
+      application<span class="token punctuation">.</span>App_teilnahme_cl<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token string">'/app/teilnahme/'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span><span class="token string">'/'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'request.dispatch'</span><span class="token punctuation">:</span> cherrypy<span class="token punctuation">.</span>dispatch<span class="token punctuation">.</span>MethodDispatcher<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+   <span class="token punctuation">)</span>     
+
+   <span class="token comment"># Method-Dispatcher für "Auswertung Mitarbeiter" Klasse</span>
+   cherrypy<span class="token punctuation">.</span>tree<span class="token punctuation">.</span>mount<span class="token punctuation">(</span>
+      application<span class="token punctuation">.</span>App_auswertung_mitarbeiter_cl<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token string">'/app/auswertungMitarbeiter/'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span><span class="token string">'/'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'request.dispatch'</span><span class="token punctuation">:</span> cherrypy<span class="token punctuation">.</span>dispatch<span class="token punctuation">.</span>MethodDispatcher<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+   <span class="token punctuation">)</span> 
+
+   <span class="token comment"># Method-Dispatcher für "Auswertung Weiterbildung" Klasse</span>
+   cherrypy<span class="token punctuation">.</span>tree<span class="token punctuation">.</span>mount<span class="token punctuation">(</span>
+      application<span class="token punctuation">.</span>App_auswertung_weiterbildung_cl<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token string">'/app/auswertungWeiterbildung/'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span><span class="token string">'/'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'request.dispatch'</span><span class="token punctuation">:</span> cherrypy<span class="token punctuation">.</span>dispatch<span class="token punctuation">.</span>MethodDispatcher<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+   <span class="token punctuation">)</span> 
+
+   <span class="token comment"># Method-Dispatcher für "Auswertung Zertifikate" Klasse</span>
+   cherrypy<span class="token punctuation">.</span>tree<span class="token punctuation">.</span>mount<span class="token punctuation">(</span>
+      application<span class="token punctuation">.</span>App_auswertung_zertifikat_cl<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token string">'/app/auswertungZertifikat/'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span><span class="token string">'/'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'request.dispatch'</span><span class="token punctuation">:</span> cherrypy<span class="token punctuation">.</span>dispatch<span class="token punctuation">.</span>MethodDispatcher<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+   <span class="token punctuation">)</span> 
+
+   <span class="token comment"># Method-Dispatcher für die "Templates" Klasse</span>
+   cherrypy<span class="token punctuation">.</span>tree<span class="token punctuation">.</span>mount<span class="token punctuation">(</span>
+      template<span class="token punctuation">.</span>Template_cl<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token string">'/templates'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span><span class="token string">'/'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'request.dispatch'</span><span class="token punctuation">:</span> cherrypy<span class="token punctuation">.</span>dispatch<span class="token punctuation">.</span>MethodDispatcher<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+   <span class="token punctuation">)</span>
+</code></pre>
+<pre class=" language-python"><code class="prism  language-python">	<span class="token comment"># Static content config</span>
+   static_config <span class="token operator">=</span> <span class="token punctuation">{</span>
+      <span class="token string">'/'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+         <span class="token string">'tools.staticdir.root'</span><span class="token punctuation">:</span> current_dir<span class="token punctuation">,</span>
+         <span class="token string">'tools.staticdir.on'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>
+         <span class="token string">'tools.staticdir.dir'</span><span class="token punctuation">:</span> <span class="token string">'./content'</span>
+      <span class="token punctuation">}</span>
+   <span class="token punctuation">}</span>
+</code></pre>
+<p>Der Server ist erreichbar unter der Addresse: <code>http://127.0.0.1:8080</code> .</p>
+<hr>
+<h2 id="durchführung-und-ergebnis-der-geforderten-prüfungen">Durchführung und Ergebnis der geforderten Prüfungen</h2>
+<h3 id="markup-validierung">Markup-Validierung</h3>
+<p>Hier konnte die Variante, in dem man jede Seite öffnete und mittels Browser den Source Code öffnete, nicht verwendet werden.</p>
+<h2 id="css-validierung">CSS-Validierung</h2>
+<p>Der Source_Code von style.css wurde mit dem <a href="http://jigsaw.w3.org/css-validator/" title="CSS-Validator">CSS-Validator</a> überprüft und es wurden 0 Fehler gefunden.</p>
+<p><img src="http://jigsaw.w3.org/css-validator/images/vcss" alt="CSS ist valide!"></p>
+<h2 id="rest-tests">REST-Tests</h2>
+<p>Die Tests verliefen weitestgehend Fehlerfrei: Code 200 OK</p>
+</div>
+</body>
+
+</html>

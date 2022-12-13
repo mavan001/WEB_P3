@@ -1,0 +1,30 @@
+# Einen ausgewählten Mitarbeiter Teilnahme Detail anzeigen -> OK 200
+GET http://localhost:8080/app/teilnahme/3bfd7a6b-ca58-4da8-96b4-7bac5bdfcb53/2021-01-21 HTTP/1.1
+Content-Type: application/json
+
+{
+	"id_m": "3bfd7a6b-ca58-4da8-96b4-7bac5bdfcb53"
+}
+
+
+###
+
+# An einer Weiterbildung teilnehmen -> OK 200
+POST http://localhost:8080/app/teilnahme/1feccdbd-1cd5-41c3-bb8f-5ef56505bb5a/3bfd7a6b-ca58-4da8-96b4-7bac5bdfcb53
+Content-Type: application/json
+
+{
+	"id_m": "3bfd7a6b-ca58-4da8-96b4-7bac5bdfcb53",
+    "id_w": "1feccdbd-1cd5-41c3-bb8f-5ef56505bb5a"
+}
+
+###
+
+# Teilnahme an Weiterbildung stornieren -> OK 200
+DELETE http://localhost:8080/app/teilnahme/1feccdbd-1cd5-41c3-bb8f-5ef56505bb5a/3bfd7a6b-ca58-4da8-96b4-7bac5bdfcb53 HTTP/1.1
+Content-Type: application/json
+
+{
+	"id_m": "3bfd7a6b-ca58-4da8-96b4-7bac5bdfcb53",
+    "id_w": "1feccdbd-1cd5-41c3-bb8f-5ef56505bb5a"
+}
